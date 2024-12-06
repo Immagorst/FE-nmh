@@ -1,7 +1,25 @@
+/* Đảm bảo body và html chiếm 100% chiều cao */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sử dụng Flexbox để sắp xếp nội dung */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nội dung chính (main-content) chiếm toàn bộ không gian còn lại */
+.main-content {
+    flex-grow: 1;
+}
+
+/* Footer luôn nằm ở dưới cùng */
 .footer {
-    background: #333;
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 20px;
-    margin-bottom: 300px;
 }

@@ -5,7 +5,7 @@ const HeroSection = () => {
     return (
         <section className="hero">
             <div className="hero-content">
-                <h1>Chào mừng đến với La Spa</h1>
+                <h1>Chào mừng đến với Min H Spa</h1>
                 <p>Trải nghiệm dịch vụ làm đẹp tuyệt vời tại đây.</p>
                 <button className="btn-book">Đặt lịch ngay</button>
             </div>

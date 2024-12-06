@@ -14,6 +14,8 @@ const Header = () => {
                     <Link to="/services">Dịch vụ</Link>
                     <Link to="/booking">Đặt lịch</Link>
                     <Link to="/contact">Liên hệ</Link>
+                    <Link to="/login">Đăng Nhập</Link>
+                    <Link to="/register">Đăng Kí</Link>
                 </nav>
             </div>
         </header>

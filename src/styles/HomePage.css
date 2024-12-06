@@ -1,0 +1,62 @@
+.homepage {
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero {
+    text-align: center;
+    background: linear-gradient(45deg, #f4c2d7, #f9d6e6);
+    padding: 50px 20px;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+.spa-list-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.spa-list-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #f4c2d7;
+}
+
+.spa-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.spa-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spa-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.spa-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.spa-card p {
+    font-size: 1rem;
+    color: #777;
+}
