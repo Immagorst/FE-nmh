@@ -1,0 +1,33 @@
+.hero {
+    height: 70vh;
+    background: linear-gradient(45deg, #f4c2d7, #f4c2d7), url('/public/S43695-min.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn-book {
+    padding: 10px 20px;
+    background-color: white;
+    color: #f4c2d7;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
