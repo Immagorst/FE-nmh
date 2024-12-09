@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import "./../styles/BookingForm.css";
 
 const BookingPage = () => {
@@ -14,7 +12,6 @@ const BookingPage = () => {
 
     return (
         <>
-            <Header />
             <div className="booking-form">
                 <h2>Đặt Lịch Dịch Vụ</h2>
                 <form onSubmit={handleSubmit}>
@@ -51,7 +48,6 @@ const BookingPage = () => {
                     <button type="submit">Đặt lịch</button>
                 </form>
             </div>
-            <Footer />
         </>
     );
 };

@@ -1,49 +1,39 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./../styles/LoginRegister.css";
+import "../styles/loginregister.css"; // Đảm bảo đường dẫn chính xác
 
 const LoginPage = () => {
-    const [formData, setFormData] = useState({ email: "", password: "" });
-    const navigate = useNavigate();
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Login Data: ", formData);
-        // Giả lập đăng nhập thành công
-        setTimeout(() => {
-            alert("Đăng nhập thành công!");
-            navigate("/"); // Điều hướng về trang chủ
-        }, 500);
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
     };
 
     return (
-        <div className="login-container">
-            <div className="login">
-                <h2>Đăng Nhập</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            required
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            placeholder="Mật khẩu"
-                            required
-                            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                        />
-                    </div>
-                    <button className="btn-submit" type="submit">
-                        Đăng Nhập
-                    </button>
-                </form>
-                <p>
-                    Bạn chưa có tài khoản? <a href="/register">Đăng ký ngay</a>
-                </p>
+        <div className="login-register-container">
+            <h1>Đăng Nhập</h1>
+            <form>
+                <div>
+                    <label>Email:</label>
+                    <input type="email" placeholder="Nhập email" required />
+                </div>
+                <div className="password-container">
+                    <label>Mật khẩu:</label>
+                    <input
+                        type={passwordVisible ? "text" : "password"}
+                        placeholder="Nhập mật khẩu"
+                        required
+                    />
+                    <span
+                        className="toggle-password"
+                        onClick={togglePasswordVisibility}
+                    >
+            {passwordVisible ? "Ẩn" : "Hiện"}
+          </span>
+                </div>
+                <button type="submit">Đăng Nhập</button>
+            </form>
+            <div className="form-footer">
+                <p>Chưa có tài khoản? <a href="/register">Đăng ký</a></p>
             </div>
         </div>
     );

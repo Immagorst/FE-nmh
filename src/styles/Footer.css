@@ -1,25 +1,31 @@
-/* Đảm bảo body và html chiếm 100% chiều cao */
+/* Toàn bộ trang chiếm đủ 100% chiều cao */
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9; /* Màu nền nhẹ cho toàn bộ trang */
 }
 
-/* Sử dụng Flexbox để sắp xếp nội dung */
-body {
+/* Bố cục ứng dụng chính */
+.app {
     display: flex;
     flex-direction: column;
+    min-height: 100vh; /* Chiều cao tối thiểu là 100% màn hình */
 }
 
-/* Nội dung chính (main-content) chiếm toàn bộ không gian còn lại */
-.main-content {
-    flex-grow: 1;
-}
-
-/* Footer luôn nằm ở dưới cùng */
-.footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
+/* Phần nội dung chính sẽ chiếm không gian co giãn */
+.content {
+    flex: 1; /* Co giãn để đẩy footer xuống cuối */
     padding: 20px;
+    background-color: #ffffff; /* Màu nền trắng cho nội dung */
+}
+
+/* Footer ở cuối trang */
+footer {
+    background-color: #f4c2d7; /* Màu hồng nhạt trùng với giao diện */
+    color: #333; /* Màu chữ tương phản */
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #ddd; /* Đường viền trên */
 }

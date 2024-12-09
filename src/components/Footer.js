@@ -4,7 +4,7 @@ import "./../styles/Footer.css";
 const Footer = () => {
     return (
         <footer className="footer">
-            <p>© 2024 Min H Spa. All Rights Reserved.</p>
+            <p>© 2024 LAVIE Website. All Rights Reserved.</p>
         </footer>
     );
 };

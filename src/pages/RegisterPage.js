@@ -1,57 +1,43 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./../styles/LoginRegister.css";
+import "../styles/loginregister.css"; // Đảm bảo đường dẫn chính xác
 
 const RegisterPage = () => {
-    const [formData, setFormData] = useState({ name: "", email: "", password: "" });
-    const navigate = useNavigate();
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Register Data: ", formData);
-        // Giả lập đăng ký thành công
-        setTimeout(() => {
-            alert("Đăng ký thành công!");
-            navigate("/login"); // Điều hướng về trang đăng nhập
-        }, 500);
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
     };
 
     return (
-        <div className="login-container">
-            <div className="login">
-                <h2>Đăng Ký</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            placeholder="Họ và Tên"
-                            required
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            required
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            placeholder="Mật khẩu"
-                            required
-                            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                        />
-                    </div>
-                    <button className="btn-submit" type="submit">
-                        Đăng Ký
-                    </button>
-                </form>
-                <p>
-                    Bạn đã có tài khoản? <a href="/login">Đăng nhập ngay</a>
-                </p>
+        <div className="login-register-container">
+            <h1>Đăng Ký</h1>
+            <form>
+                <div>
+                    <label>Họ và tên:</label>
+                    <input type="text" placeholder="Nhập họ và tên" required />
+                </div>
+                <div>
+                    <label>Email:</label>
+                    <input type="email" placeholder="Nhập email" required />
+                </div>
+                <div className="password-container">
+                    <label>Mật khẩu:</label>
+                    <input
+                        type={passwordVisible ? "text" : "password"}
+                        placeholder="Nhập mật khẩu"
+                        required
+                    />
+                    <span
+                        className="toggle-password"
+                        onClick={togglePasswordVisibility}
+                    >
+            {passwordVisible ? "Ẩn" : "Hiện"}
+          </span>
+                </div>
+                <button type="submit">Đăng Ký</button>
+            </form>
+            <div className="form-footer">
+                <p>Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
             </div>
         </div>
     );

@@ -1,71 +1,102 @@
-.login-container {
+/* Chỉ áp dụng cho các trang có class .login-register-container */
+.login-register-container {
+    max-width: 400px; /* Chiều rộng tối đa của form */
     width: 100%;
-    height: 100vh;
+    padding: 30px;
+    background-color: #fff; /* Nền trắng cho form */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ */
+    margin: 0 auto; /* Căn giữa form */
+}
+
+/* Căn giữa trang đăng nhập và đăng ký với flexbox */
+.login-register-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #f4c2d7, #f4c2d7);
+    height: 100vh; /* Chiều cao trang chiếm hết màn hình */
+    background-color: #f4c2d7; /* Màu nền nhẹ cho trang */
+    font-family: 'Poppins', sans-serif; /* Font chữ đẹp */
 }
 
-.login {
-    background: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 40px 30px;
-    border-radius: 10px;
+/* Tiêu đề trong form đăng nhập và đăng ký */
+.login-register-container h1 {
     text-align: center;
-    width: 400px;
-}
-
-.login h2 {
-    font-size: 2rem;
-    color: #333;
+    color: #db7093; /* Màu sắc tiêu đề */
     margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+/* Form đăng nhập/đăng ký */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Khoảng cách giữa các ô input */
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
+/* Label cho input */
+label {
     font-size: 1rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Input ô nhập liệu */
+input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
 }
 
 input:focus {
-    border-color: #f4c2d7;
+    outline: none;
+    border-color: #db7093;
 }
 
-.btn-submit {
-    width: 100%;
-    padding: 10px;
-    background-color: #f4c2d7;
+/* Nút đăng nhập/đăng ký */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #db7093;
     border: none;
     border-radius: 5px;
-    color: white;
-    font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-.btn-submit:hover {
-    background-color: #e09abb;
+button:hover {
+    background-color: #c46482;
 }
 
-p {
+/* Khu vực mật khẩu (ẩn/hiện mật khẩu) */
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Link chuyển giữa các trang */
+.form-footer {
+    text-align: center;
     margin-top: 20px;
 }
 
-p a {
-    color: #f4c2d7;
+.form-footer a {
+    color: #db7093;
     text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
+    font-weight: 500;
 }
 
-p a:hover {
+.form-footer a:hover {
     text-decoration: underline;
 }

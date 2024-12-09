@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import "./../styles/ContactForm.css";
 
 const ContactPage = () => {
@@ -14,7 +12,7 @@ const ContactPage = () => {
 
     return (
         <>
-            <Header />
+
             <div className="main-content">
                 <div className="contact-form">
                     <h2>Liên Hệ với chúng tôi</h2>
@@ -28,7 +26,6 @@ const ContactPage = () => {
                     </form>
                 </div>
             </div>
-            <Footer/>
         </>
     );
 };
