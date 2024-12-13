@@ -1,4 +1,24 @@
-/* Chỉ áp dụng cho các trang có class .login-register-container */
+/* Đảm bảo không có margin và padding mặc định cho toàn bộ trang */
+.content {
+    margin: 0;
+    padding: 0;
+    height:100% ; /* Đảm bảo body chiếm toàn bộ chiều cao của màn hình */
+    width: 100%; /* Đảm bảo body chiếm toàn bộ chiều rộng */
+    box-sizing: border-box;
+}
+
+/* Cập nhật page-container để đảm bảo background phủ kín toàn bộ trang */
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Chiều cao trang chiếm toàn bộ màn hình */
+    width: 100%; /* Chiều rộng toàn bộ màn hình */
+    background: url('/public/S43695-min.jpg') no-repeat center center; /* Hình nền */
+    background-size: cover; /* Đảm bảo hình ảnh phủ kín */
+}
+
+/* Cập nhật login-register-container */
 .login-register-container {
     max-width: 400px; /* Chiều rộng tối đa của form */
     width: 100%;
@@ -7,17 +27,10 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ */
     margin: 0 auto; /* Căn giữa form */
+    text-align: center; /* Căn giữa nội dung bên trong */
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
 }
 
-/* Căn giữa trang đăng nhập và đăng ký với flexbox */
-.login-register-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Chiều cao trang chiếm hết màn hình */
-    background-color: #f4c2d7; /* Màu nền nhẹ cho trang */
-    font-family: 'Poppins', sans-serif; /* Font chữ đẹp */
-}
 
 /* Tiêu đề trong form đăng nhập và đăng ký */
 .login-register-container h1 {
@@ -30,7 +43,9 @@
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Khoảng cách giữa các ô input */
+    gap: 15px; /* Khoảng cách giữa các ô input */
+    align-items: stretch; /* Đảm bảo các thành phần co giãn đầy đủ */
+    width: 100%; /* Đảm bảo form vừa với container */
 }
 
 /* Label cho input */
@@ -38,6 +53,7 @@ label {
     font-size: 1rem;
     margin-bottom: 5px;
     color: #333;
+    text-align: left; /* Căn trái nhãn để rõ ràng */
 }
 
 /* Input ô nhập liệu */
@@ -47,16 +63,19 @@ input {
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 100%;
+    display: block;
+    box-sizing: border-box; /* Đảm bảo không bị tràn khi có padding */
 }
 
 input:focus {
     outline: none;
     border-color: #db7093;
+    box-shadow: 0 0 5px rgba(219, 112, 147, 0.5);
 }
 
 /* Nút đăng nhập/đăng ký */
 button {
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-size: 1rem;
     color: #fff;
     background-color: #db7093;
@@ -64,6 +83,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 100%; /* Đảm bảo nút chiếm hết chiều rộng */
+    box-sizing: border-box;
 }
 
 button:hover {

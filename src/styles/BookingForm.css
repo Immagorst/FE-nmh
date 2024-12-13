@@ -1,12 +1,36 @@
+.app {
+    display: flex;
+    flex-direction: column; /* Đảm bảo các phần tử bên trong xếp theo chiều dọc */
+    min-height: 100vh; /* Chiếm tối thiểu chiều cao của cửa sổ */
+}
+
+.content {
+    display: flex;
+    flex: 1; /* Chiếm phần còn lại của không gian */
+    flex-direction: column;
+    padding: 0;
+}
+
+.footer{
+    margin: 0px;
+    padding: 0px;
+}
+.background{
+    background-color: lightyellow;
+    margin: 0px;
+    padding: 0px;
+    flex-grow: 1;
+}
 .booking-form {
     width: 100%;
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
+    max-width: 700px;
+    margin: 50px auto; /* Đảm bảo không có margin dưới */
+    padding: 30px;
+    background-color: #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin-bottom: 380px;
+    overflow: hidden;
+    margin-bottom: 0; /* Đảm bảo không có margin dưới */
 }
 
 .booking-form h2 {
@@ -20,7 +44,9 @@
     margin-bottom: 15px;
 }
 
-.booking-form input {
+.booking-form input,
+.booking-form textarea,
+.booking-form select {
     width: 100%;
     height: 40px;
     padding: 0 10px;
@@ -31,28 +57,20 @@
     transition: border-color 0.3s;
 }
 
-.booking-form input:focus {
+.booking-form input:focus,
+.booking-form textarea:focus,
+.booking-form select:focus {
     border-color: #f4c2d7;
 }
 
 .booking-form textarea {
-    width: 100%;
     height: 100px;
     padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.booking-form textarea:focus {
-    border-color: #f4c2d7;
 }
 
 .booking-form button {
-    width: 105%;
-    padding: 10px;
+    width: 100%;
+    padding: 12px; /* Tăng padding của nút */
     background-color: #f4c2d7;
     color: white;
     font-size: 1.1rem;

@@ -1,82 +1,165 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 .homepage {
     font-family: 'Poppins', sans-serif;
-    background: url('/public/LAVIE-removebg-logo.png        ') no-repeat center center fixed; /* Thay đổi đường dẫn tới ảnh mới */
-    background-size: cover; /* Ảnh sẽ phủ toàn bộ màn hình */
-    color: white; /* Màu chữ cho dễ đọc */
+    background: url('/public/LAVIE-removebg-logo.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
+    padding: 20px;
 }
+
+
+
+
 
 .hero {
     text-align: center;
-    padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.7); /* Lớp phủ mờ giúp nội dung nổi bật */
-    color: #333; /* Màu chữ đậm */
-    border-radius: 10px;
-    width: 80%;
-    margin: 0 auto;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.9); /* Slightly more opaque background */
+    color: #333;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: #DB7093; /* Màu sắc chữ chính cho tiêu đề */
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: #DB7093;
 }
 
 .hero p {
-    font-size: 1.5rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    line-height: 1.8;
 }
 
+.cta-button {
+    background-color: #DB7093;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #a05573;
+}
 .spa-list-section {
-    padding: 50px 20px;
+    padding: 40px 20px;
     text-align: center;
-    margin-top: 30px;
-    background: rgba(255, 255, 255, 0.9); /* Lớp phủ trắng để tạo sự tách biệt */
+    background: lightblue;
     color: #333;
-    border-radius: 10px;
-    width: 80%;
-    margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .spa-list-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #DB7093; /* Màu cho tiêu đề của phần dịch vụ */
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: #DB7093;
 }
 
 .spa-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     justify-content: center;
 }
 
 .spa-card {
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     padding: 20px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .spa-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 .spa-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.spa-card p {
-    font-size: 1rem;
+.spa-card ul {
+    padding: 0;
+    margin: 10px 0 0;
+    list-style-type: none;
+    text-align: left; /* Align addresses to the left */
+}
+
+.spa-card ul li {
+    font-size: 1rem; /* Tăng kích thước chữ cho dễ đọc */
+    line-height: 1.5;
     color: #555;
+    padding: 5px 0; /* Thêm khoảng cách giữa các địa chỉ */
+    font-weight: bold; /* Làm đậm chữ */
+    font-style: italic; /* In nghiêng chữ */
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer a {
+    color: #DB7093;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .spa-card {
+        padding: 15px;
+    }
+
+    .spa-list {
+        grid-template-columns: 1fr;
+    }
+
+    .spa-list-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-button {
+        font-size: 1.1rem;
+        padding: 8px 15px;
+    }
 }
