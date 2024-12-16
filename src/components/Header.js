@@ -22,6 +22,9 @@ const Header = ({ isLoggedIn, onLogout }) => {
                         <Link to="/booking">Đặt lịch</Link>
                     </li>
                     <li>
+                        <Link to="/appointments">Xem lịch hẹn</Link>
+                    </li>
+                    <li>
                         <Link to="/about">Giới thiệu</Link>
                     </li>
                     <li>
@@ -31,10 +34,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
                     {!isLoggedIn ? (
                         <>
                             <li>
-                                <Link to="/login">Đăng nhập</Link>
-                            </li>
-                            <li>
-                                <Link to="/register">Đăng ký</Link>
+                                <Link to="/loginregister">Đăng Nhập/Đăng Kí</Link>
                             </li>
                         </>
                     ) : (

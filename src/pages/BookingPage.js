@@ -174,8 +174,8 @@ const BookingPage = () => {
         spa: "",
         service: "",
         time: "",
-        name: "",
         date: "",
+        price: "",
     });
 
     const [availableServices, setAvailableServices] = useState([]);
@@ -214,42 +214,53 @@ const BookingPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        // Gửi thông tin đến backend
+
+        // Kiểm tra nếu tất cả trường đã được điền đầy đủ
+        if (!formData.spa || !formData.service || !formData.time || !formData.date) {
+            alert("Vui lòng chọn đầy đủ các trường!");
+            return;
+        }
+
         try {
+            const token = localStorage.getItem("token"); // Lấy token từ localStorage
+            if (!token) {
+                alert("Bạn cần đăng nhập để thực hiện hành động này.");
+                return;
+            }
             const response = await fetch("http://localhost:5000/api/booking", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(formData), // Chuyển dữ liệu form thành JSON
             });
-    
+
             if (!response.ok) {
-                // Nếu có lỗi từ server, hiển thị thông báo lỗi
                 const message = await response.text();
                 alert("Có lỗi xảy ra: " + message);
                 return;
             }
-    
-            // Nếu gửi thành công, hiển thị thông báo
+
+            // Nếu gửi thành công
             const result = await response.json();
             alert("Đặt lịch thành công! Mã đặt lịch: " + result.bookingId);
-    
-            // Reset form sau khi gửi thành công
+
+            // Reset form
             setFormData({
                 spa: "",
                 service: "",
                 time: "",
-                name: "",
                 date: "",
+                price: "",
             });
-    
+
         } catch (err) {
             console.error("Lỗi khi gửi yêu cầu:", err);
             alert("Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại sau.");
         }
     };
+
 
     // Lấy ngày hôm nay để chặn ngày quá khứ
     const today = new Date().toISOString().split("T")[0];
