@@ -40,7 +40,7 @@ const AppointmentsPage = () => {
     // Hàm xử lý xóa lịch hẹn
     const handleDeleteAppointment = async (appointmentId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/appointments/${appointmentId}`, {
+            const response = await fetch(`https://beserver123.onrender.com/api/appointments/${appointmentId}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
