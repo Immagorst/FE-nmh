@@ -9,7 +9,7 @@ const AppointmentsPage = () => {
     // Hàm lấy danh sách lịch hẹn từ backend
     const fetchAppointments = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/appointments", {
+            const response = await fetch("https://beserver123.onrender.com/api/appointments", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
