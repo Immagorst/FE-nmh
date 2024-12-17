@@ -227,7 +227,7 @@ const BookingPage = () => {
                 alert("Bạn cần đăng nhập để thực hiện hành động này.");
                 return;
             }
-            const response = await fetch("http://localhost:5000/api/booking", {
+            const response = await fetch("https://beserver123.onrender.com/api/booking", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
