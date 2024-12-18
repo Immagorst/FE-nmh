@@ -56,33 +56,40 @@ const LoginRegister = ({ onLogin }) => {
     };
 
     const handleRegisterSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch("https://web-full-stack-3.onrender.com/api/auth/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: name.trim(),
-                    email: email.trim(),
-                    password: password.trim(),
-                }),
-            });
+    e.preventDefault();
+    try {
+        const response = await fetch("https://web-full-stack-3.onrender.com/api/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name.trim(),
+                email: email.trim(),
+                password: password.trim(),
+            }),
+        });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                setError(errorData.message || "Đăng ký thất bại");
-                return;
+        if (!response.ok) {
+            const errorData = await response.json();
+
+            // Kiểm tra lỗi email đã tồn tại
+            if (errorData.message && errorData.message.includes("email")) {
+                alert("Email này đã được sử dụng. Vui lòng thử lại với email khác.");
+            } else {
+                alert(errorData.message || "Đăng ký thất bại. Vui lòng thử lại.");
             }
-
-            setError("");
-            alert("Đăng ký thành công! Vui lòng đăng nhập.");
-            setIsSignUpActive(false);
-        } catch (err) {
-            setError("Không thể kết nối đến máy chủ.");
+            return;
         }
-    };
+
+        // Nếu đăng ký thành công
+        alert("Đăng ký thành công! Vui lòng đăng nhập.");
+        setIsSignUpActive(false); // Quay về trang đăng nhập
+    } catch (err) {
+        alert("Không thể kết nối đến máy chủ. Vui lòng thử lại sau.");
+    }
+};
+
 
     return (
         <div className={`container ${isSignUpActive ? "right-panel-active" : ""}`}>
