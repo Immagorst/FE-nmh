@@ -58,7 +58,7 @@ const LoginRegister = ({ onLogin }) => {
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("https://web-full-stack-3.onrender.comapi/auth/register", {
+            const response = await fetch("https://web-full-stack-3.onrender.com/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
