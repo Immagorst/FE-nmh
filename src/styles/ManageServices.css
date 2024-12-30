@@ -1,0 +1,90 @@
+/* ManageServices.css */
+
+.manage-services {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.manage-services h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.manage-services .add-service-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.manage-services .add-service-form input,
+.manage-services .add-service-form textarea {
+    flex: 1 1 calc(50% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.manage-services .add-service-form button {
+    flex: 1 1 100%;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.manage-services .add-service-form button:hover {
+    background-color: #0056b3;
+}
+
+.manage-services table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.manage-services th,
+.manage-services td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.manage-services th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+.manage-services tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.manage-services tr:hover {
+    background-color: #f1f1f1;
+}
+
+.manage-services button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.manage-services button:hover {
+    background-color: #c82333;
+}
