@@ -1,0 +1,62 @@
+/* ManageAppointments.css */
+
+.manage-appointments {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.manage-appointments h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.manage-appointments table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.manage-appointments th,
+.manage-appointments td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.manage-appointments th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+.manage-appointments tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.manage-appointments tr:hover {
+    background-color: #f1f1f1;
+}
+
+.manage-appointments button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.manage-appointments button:hover {
+    background-color: #45a049;
+}
+
+.manage-appointments .no-data {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    margin-top: 20px;
+}
