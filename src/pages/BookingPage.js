@@ -18,13 +18,12 @@ const BookingPage = () => {
     const [selectedPrice, setSelectedPrice] = useState(""); // Giá dịch vụ được chọn
     const [loading, setLoading] = useState(false);
 
-    const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
     // Lấy danh sách Spa và dịch vụ từ backend
     useEffect(() => {
         const fetchSpaData = async () => {
             try {
-                const response = await fetch(`${API_BASE_URL}/api/services/all`, {
+                const response = await fetch(`https://web-full-stack-3.onrender.com/api/services/all`, {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -90,7 +89,7 @@ const BookingPage = () => {
 
         try {
             setLoading(true);
-            const response = await fetch(`${API_BASE_URL}/api/appointments`, {
+            const response = await fetch(`https://web-full-stack-3.onrender.com/api/appointments`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
