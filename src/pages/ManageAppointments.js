@@ -5,7 +5,7 @@ import "../styles/ManageAppointments.css";
 
 const ManageAppointments = () => {
     const [appointments, setAppointments] = useState([]);
-    const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 
     // Fetch appointments khi component mount
     useEffect(() => {
@@ -15,7 +15,7 @@ const ManageAppointments = () => {
     // Hàm fetch danh sách lịch hẹn
     const fetchAppointments = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/appointments`, {
+            const response = await fetch(`https://web-full-stack-3.onrender.com/api/appointments`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,7 +37,7 @@ const ManageAppointments = () => {
     // Hàm xác nhận lịch hẹn
     const handleApproveAppointment = async (id) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/appointments/approve/${id}`, {
+            const response = await fetch(`https://web-full-stack-3.onrender.com/api/appointments/approve/${id}`, {
                 method: "PUT",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
