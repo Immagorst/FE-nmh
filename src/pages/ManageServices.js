@@ -13,7 +13,7 @@ const ManageServices = () => {
     });
     const [editingService, setEditingService] = useState(null); // Để chỉnh sửa dịch vụ
     const [loading, setLoading] = useState(false);
-    const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+    
 
     useEffect(() => {
         fetchServices();
@@ -22,7 +22,7 @@ const ManageServices = () => {
     // Lấy danh sách dịch vụ
     const fetchServices = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/services/all`, {
+            const response = await fetch(`https://web-full-stack-3.onrender.com/api/services/all`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -94,7 +94,7 @@ const ManageServices = () => {
 
         try {
             setLoading(true);
-            const response = await fetch(`${API_BASE_URL}/api/services/update/${editingService._id}`, {
+            const response = await fetch(`https://web-full-stack-3.onrender.com/api/services/update/${editingService._id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -123,7 +123,7 @@ const ManageServices = () => {
     const handleDeleteService = async (id) => {
         if (window.confirm("Bạn có chắc chắn muốn xóa dịch vụ này?")) {
             try {
-                const response = await fetch(`${API_BASE_URL}/api/services/delete/${id}`, {
+                const response = await fetch(`https://web-full-stack-3.onrender.com/api/services/delete/${id}`, {
                     method: "DELETE",
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
