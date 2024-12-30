@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../styles/AppointmentPage.css";
-
 const AppointmentsPage = () => {
     const [appointments, setAppointments] = useState([]); // State lưu danh sách lịch hẹn
     const [error, setError] = useState(""); // State lưu lỗi
@@ -9,7 +8,7 @@ const AppointmentsPage = () => {
     // Hàm lấy danh sách lịch hẹn từ backend
     const fetchAppointments = async () => {
         try {
-            const response = await fetch("https://web-full-stack-3.onrender.com/api/appointments", {
+            const response = await fetch("http://localhost:5000/api/appointments", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -40,7 +39,7 @@ const AppointmentsPage = () => {
     // Hàm xử lý xóa lịch hẹn
     const handleDeleteAppointment = async (appointmentId) => {
         try {
-            const response = await fetch(`https://web-full-stack-3.onrender.com/api/appointments/${appointmentId}`, {
+            const response = await fetch(`http://localhost:5000/api/appointments/${appointmentId}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -89,7 +88,7 @@ const AppointmentsPage = () => {
                         <th>Dịch Vụ</th>
                         <th>Thời Gian</th>
                         <th>Ngày</th>
-                        <th>Giá</th>
+                        <th>Giá(K)</th>
                         <th>Hành Động</th>
                     </tr>
                     </thead>
@@ -105,7 +104,7 @@ const AppointmentsPage = () => {
                             <td>
                                 <button
                                     onClick={() => handleDeleteAppointment(appointment._id)}
-                                    style={{ color: "red" }}
+
                                     className="delete-button"
                                 >
                                     Xóa
