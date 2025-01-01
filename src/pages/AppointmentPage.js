@@ -8,7 +8,7 @@ const AppointmentsPage = () => {
     // Hàm lấy danh sách lịch hẹn từ backend
     const fetchAppointments = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/appointments", {
+            const response = await fetch("https://be-nmh.onrender.com/api/appointments", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const AppointmentsPage = () => {
     // Hàm xử lý xóa lịch hẹn
     const handleDeleteAppointment = async (appointmentId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/appointments/${appointmentId}`, {
+            const response = await fetch(`https://be-nmh.onrender.com/api/appointments/${appointmentId}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
