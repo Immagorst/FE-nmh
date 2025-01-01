@@ -15,7 +15,7 @@ const ManageAppointments = () => {
     // Hàm fetch danh sách lịch hẹn
     const fetchAppointments = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/appointments`, {
+            const response = await fetch(`https://be-nmh.onrender.com/api/appointments`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,7 +37,7 @@ const ManageAppointments = () => {
     // Hàm xác nhận lịch hẹn
     const handleApproveAppointment = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/appointments/approve/${id}`, {
+            const response = await fetch(`https://be-nmh.onrender.com/api/appointments/approve/${id}`, {
                 method: "PUT",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
