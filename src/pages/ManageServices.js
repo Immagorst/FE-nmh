@@ -21,7 +21,7 @@ const ManageServices = () => {
     // Lấy danh sách dịch vụ
     const fetchServices = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/services/all`, {
+            const response = await fetch(`https://be-nmh.onrender.com/api/services/all`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -44,7 +44,7 @@ const ManageServices = () => {
 
         try {
             setLoading(true);
-            const response = await fetch(`http://localhost:5000/api/services/add`, {
+            const response = await fetch(`https://be-nmh.onrender.com/api/services/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const ManageServices = () => {
 
         try {
             setLoading(true);
-            const response = await fetch(`http://localhost:5000/api/services/update/${editingService._id}`, {
+            const response = await fetch(`https://be-nmh.onrender.com/api/services/update/${editingService._id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -122,7 +122,7 @@ const ManageServices = () => {
     const handleDeleteService = async (id) => {
         if (window.confirm("Bạn có chắc chắn muốn xóa dịch vụ này?")) {
             try {
-                const response = await fetch(`http://localhost:5000/api/services/delete/${id}`, {
+                const response = await fetch(`https://be-nmh.onrender.com/api/services/delete/${id}`, {
                     method: "DELETE",
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -142,7 +142,7 @@ const ManageServices = () => {
     // Xác nhận dịch vụ
     const handleApproveService = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/services/approve/${id}`, {
+            const response = await fetch(`https://be-nmh.onrender.com/api/services/approve/${id}`, {
                 method: "PUT",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
