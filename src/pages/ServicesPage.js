@@ -6,7 +6,7 @@ const ServicePage = () => {
     const [loading, setLoading] = useState(true); // Trạng thái tải dữ liệu
     const [error, setError] = useState(null); // Lỗi khi lấy dữ liệu
 
-    const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "https://be-nmh.onrender.com";
 
     // Lấy danh sách dịch vụ từ backend
     useEffect(() => {
