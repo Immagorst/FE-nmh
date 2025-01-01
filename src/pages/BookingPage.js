@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";  // Import ToastContaine
 import "react-toastify/dist/ReactToastify.css";  // Import CSS cho Toastify
 import "./../styles/BookingForm.css";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";  // API base URL
+const API_BASE_URL = process.env.REACT_APP_API_URL || "https://be-nmh.onrender.com";  // API base URL
 
 const BookingPage = () => {
     const [formData, setFormData] = useState({
