@@ -1,0 +1,45 @@
+.appointment-confirmation-page {
+    margin: 20px;
+}
+
+.service-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.service-table th, .service-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.service-table th {
+    background-color: #f4f4f4;
+}
+
+.service-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.loading, .error {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+}

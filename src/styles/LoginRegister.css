@@ -37,8 +37,10 @@ p {
     line-height: 20px;
     font-size: 14px;
 }
-
-/* Container chính */
+span{
+    cursor: pointer;
+}
+/* Container */
 .container {
     background: rgba(255, 255, 255, 0.8); /* Thêm nền mờ cho container để dễ nhìn nội dung */
     border-radius: 10px;
@@ -49,6 +51,7 @@ p {
     height: 500px;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 
 }
 
@@ -92,6 +95,8 @@ p {
     width: 100%;
 }
 .form-style .sign-up-button{
+    cursor: pointer;
+    margin: 10px;
     width: 100%;
 }
 button.but-style {
@@ -105,6 +110,7 @@ button.but-style {
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    cursor: pointer;
 }
 
 button:active {

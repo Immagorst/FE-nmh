@@ -1,112 +1,94 @@
-import React, { useState } from "react";
-import "./../styles/ServicePage.css";
+import React, { useState, useEffect } from "react";
+import "../styles/ServicePage.css"; // Đảm bảo file CSS được tạo và liên kết đúng
 
 const ServicePage = () => {
-    const [selectedSpa, setSelectedSpa] = useState(null); // Trạng thái spa được chọn
+    const [services, setServices] = useState([]); // Dữ liệu dịch vụ
+    const [loading, setLoading] = useState(true); // Trạng thái tải dữ liệu
+    const [error, setError] = useState(null); // Lỗi khi lấy dữ liệu
 
-    const spas = [
-        {
-            id: 1,
-            name: "De L’Amour Spa",
-            services: [
-                "REFRESH SKIN ",
-                "Thải Chì Môi ",
-                "Thải Chì Da Mặt ",
-                "Gói COLLAGEN ",
-                "Trị Mụn ",
-                "Ủ Trắng Da Mặt ",
-                "Trị Thâm ",
-                "Massage thư giãn ",  // Dịch vụ mới
-                "Chăm sóc da mặt cơ bản ",  // Dịch vụ mới
-            ],
-        },
-        {
-            id: 2,
-            name: "La Vie En Rose Beauty & Spa",
-            services: [
-                "Tiêm truyền nuôi da: Tiêm cocktail 5TBG, Tiêm Radiance 10TBG, Tiêm TBG điều trị nám",
-                "PP làm đẹp không phẫu thuật: Tiêm filler Juvederm, Tiêm botox, Nhấn mí CN Laser",
-                "Chăm sóc body: Giảm béo CNC, Tắm dưỡng trắng body TCTN, Triệt lông vĩnh viễn công nghệ cao",
-                "Mát-xa body thư giãn ", // Dịch vụ mới
-                "Điều trị nám với laser ", // Dịch vụ mới
-            ],
-        },
-        {
-            id: 3,
-            name: "Sorella Beauty Spa",
-            services: [
-                "Liệu trình chăm sóc sắc đẹp chuyên nghiệp.",
-                "Chăm sóc da mặt bằng tinh chất vitamin C ", // Dịch vụ mới
-                "Phục hồi tóc hư tổn ", // Dịch vụ mới
-            ],
-        },
-        {
-            id: 4,
-            name: "Thiên Hà Spa",
-            services: [
-                "Dịch vụ chăm sóc da mặt và trị liệu cao cấp.",
-                "Massage thư giãn toàn thân ", // Dịch vụ mới
-                "Điều trị mụn chuyên sâu ", // Dịch vụ mới
-            ],
-        },
-        {
-            id: 5,
-            name: "Perla Spa Hà Nội",
-            services: [
-                "Massage thư giãn, trị liệu da.",
-                "Chăm sóc da mặt chuyên sâu ", // Dịch vụ mới
-                "Tắm trắng toàn thân ", // Dịch vụ mới
-            ],
-        },
-        {
-            id: 6,
-            name: "Shi Beauty & Spa",
-            services: [
-                "Chăm sóc sắc đẹp với liệu trình thiên nhiên.",
-                "Điều trị thâm quầng mắt ", // Dịch vụ mới
-                "Trẻ hóa da bằng công nghệ ánh sáng ", // Dịch vụ mới
-            ],
-        },
-        {
-            id: 7,
-            name: "Anam QT Spa",
-            services: [
-                "Dịch vụ làm đẹp chuẩn quốc tế.",
-                "Liệu trình chăm sóc da mặt cao cấp ", // Dịch vụ mới
-                "Massage thư giãn toàn thân ", // Dịch vụ mới
-            ],
-        },
-    ];
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
-    const handleClick = (spaId) => {
-        setSelectedSpa(selectedSpa === spaId ? null : spaId); // Bấm lại để ẩn/hiện dịch vụ
-    };
+    // Lấy danh sách dịch vụ từ backend
+    useEffect(() => {
+        const fetchServices = async () => {
+            try {
+                setLoading(true); // Bắt đầu tải
+                const response = await fetch(`${API_BASE_URL}/api/services/all`, {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        "Content-Type": "application/json",
+                    },
+                });
 
+                if (!response.ok) {
+                    const errorMessage = await response.json();
+                    throw new Error(errorMessage.message || "Không thể lấy danh sách dịch vụ.");
+                }
+
+                const data = await response.json();
+                console.log("Dữ liệu dịch vụ nhận được:", data);
+
+                // Kết hợp dịch vụ đã phê duyệt và dịch vụ đang chờ phê duyệt
+                const allServices = [...data.services, ...data.pendingServices];
+                setServices(allServices);
+            } catch (err) {
+                setError(err.message); // Lưu lỗi
+            } finally {
+                setLoading(false); // Hoàn tất tải
+            }
+        };
+
+        fetchServices();
+    }, [API_BASE_URL]);
+
+    // Hiển thị trạng thái tải
+    if (loading) {
+        return <div className="loading">Đang tải danh sách dịch vụ...</div>;
+    }
+
+    // Hiển thị lỗi nếu có
+    if (error) {
+        return <div className="error">Lỗi: {error}</div>;
+    }
+
+    // Hiển thị tất cả dịch vụ trong một bảng
     return (
-        
         <div className="service-page">
-        <div className="content-wrapper">
-          <h1>Danh Sách Các Spa</h1>
-          <div className="spa-grid">
-            {spas.map((spa) => (
-              <div
-                key={spa.id}
-                className={`spa-card ${selectedSpa === spa.id ? "expanded" : ""}`}
-              >
-                <h2 onClick={() => handleClick(spa.id)}>{spa.name}</h2>
-                {selectedSpa === spa.id && (
-                  <ul className="service-list">
-                    {spa.services.map((service, index) => (
-                      <li key={index}>{service}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
+            <div className="content-wrapper">
+                <h1>Danh Sách Dịch Vụ</h1>
+
+                <table className="service-table">
+                    <thead>
+                    <tr>
+                        <th>Tên Spa</th>
+                        <th>Tên Dịch Vụ</th>
+                        <th>Mô Tả</th>
+                        <th>Giá (VND)</th>
+                        <th>Trạng Thái</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {services.length > 0 ? (
+                        services.map((service, index) => (
+                            <tr key={index}>
+                                <td>{service.spaName}</td>
+                                <td>{service.name}</td>
+                                <td>{service.description || "Không có mô tả"}</td>
+                                <td>{service.price.toLocaleString()} VND</td>
+                                <td>{service.status === "approved" ? "Đã phê duyệt" : "Đang chờ"}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="5">Không có dịch vụ nào để hiển thị.</td>
+                        </tr>
+                    )}
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
     );
-  };
-  
-  export default ServicePage;
+};
+
+export default ServicePage;

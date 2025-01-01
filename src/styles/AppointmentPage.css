@@ -17,15 +17,15 @@ table th {
 }
 
 .delete-button {
-    background-color: #000000;
+    background-color: #ffffff;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
-    color: white;
+    color: black;
     cursor: pointer;
 }
 
 .delete-button:hover {
-    background-color: #e60000;
-    color: #000000;
+    background-color: #dc9999;
+    color: white;
 }

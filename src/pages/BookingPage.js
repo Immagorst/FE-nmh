@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import BookingForm from "../components/BookingForm";
+import { ToastContainer, toast } from "react-toastify";  // Import ToastContainer và toast
+import "react-toastify/dist/ReactToastify.css";  // Import CSS cho Toastify
 import "./../styles/BookingForm.css";
+
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";  // API base URL
 
 const BookingPage = () => {
     const [formData, setFormData] = useState({
@@ -18,30 +22,27 @@ const BookingPage = () => {
     const [selectedPrice, setSelectedPrice] = useState(""); // Giá dịch vụ được chọn
     const [loading, setLoading] = useState(false);
 
-
     // Lấy danh sách Spa và dịch vụ từ backend
     useEffect(() => {
         const fetchSpaData = async () => {
             try {
-                const response = await fetch(`https://web-full-stack-3.onrender.com/api/services/all`, {
+                const response = await fetch(`${API_BASE_URL}/api/services/all`, {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
                     },
                 });
-
                 if (!response.ok) throw new Error("Không thể lấy danh sách dịch vụ.");
                 const data = await response.json();
                 setSpaData(data.services);
-
                 // Lọc danh sách tên Spa duy nhất
                 const uniqueSpaNames = [...new Set(data.services.map((service) => service.spaName))];
                 setSpaNames(uniqueSpaNames);
             } catch (error) {
                 console.error("Lỗi khi lấy danh sách Spa:", error.message);
+                toast.error("Lỗi khi lấy dữ liệu Spa!", { position: "top-right" }); // Hiển thị thông báo lỗi
             }
         };
-
         fetchSpaData();
     }, [API_BASE_URL]);
 
@@ -83,13 +84,13 @@ const BookingPage = () => {
 
         // Kiểm tra nếu các trường đã được điền đầy đủ
         if (!formData.spa || !formData.service || !formData.time || !formData.date || !formData.email) {
-            alert("Vui lòng chọn đầy đủ thông tin!");
+            toast.error("Vui lòng chọn đầy đủ thông tin!", { position: "top-right" });  // Thông báo lỗi
             return;
         }
 
         try {
             setLoading(true);
-            const response = await fetch(`https://web-full-stack-3.onrender.com/api/appointments`, {
+            const response = await fetch(`${API_BASE_URL}/api/appointments`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -100,13 +101,13 @@ const BookingPage = () => {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                alert("Lỗi: " + errorData.message);
+                toast.error("Lỗi: " + errorData.message, { position: "top-right" });  // Thông báo lỗi
                 return;
             }
 
             // Nếu thành công
             const result = await response.json();
-            alert("Đặt lịch thành công! Vui lòng kiểm tra email để nhận thông báo.");
+            toast.success("Đặt lịch thành công! Vui lòng kiểm tra email để nhận thông báo.", { position: "top-right" });  // Thông báo thành công
             setFormData({
                 spa: "",
                 service: "",
@@ -117,7 +118,7 @@ const BookingPage = () => {
             });
         } catch (error) {
             console.error("Lỗi khi đặt lịch:", error);
-            alert("Có lỗi xảy ra, vui lòng thử lại sau.");
+            toast.error("Có lỗi xảy ra, vui lòng thử lại sau.", { position: "top-right" });  // Thông báo lỗi
         } finally {
             setLoading(false);
         }
@@ -127,20 +128,23 @@ const BookingPage = () => {
     const today = new Date().toISOString().split("T")[0];
 
     return (
-        <BookingForm
-            formData={formData}
-            spaNames={spaNames}
-            availableServices={availableServices}
-            handleSpaChange={handleSpaChange}
-            handleServiceChange={handleServiceChange}
-            handleDateChange={handleDateChange}
-            handleTimeChange={handleTimeChange}
-            handleEmailChange={handleEmailChange}
-            handleSubmit={handleSubmit}
-            selectedPrice={selectedPrice}
-            today={today}
-            loading={loading}
-        />
+        <div>
+            <ToastContainer />  {/* Đặt container Toastify tại đây */}
+            <BookingForm
+                formData={formData}
+                spaNames={spaNames}
+                availableServices={availableServices}
+                handleSpaChange={handleSpaChange}
+                handleServiceChange={handleServiceChange}
+                handleDateChange={handleDateChange}
+                handleTimeChange={handleTimeChange}
+                handleEmailChange={handleEmailChange}
+                handleSubmit={handleSubmit}
+                selectedPrice={selectedPrice}
+                today={today}
+                loading={loading}
+            />
+        </div>
     );
 };
 
